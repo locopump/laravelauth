@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('intranet.cuenta', function (Blueprint $table) {
+        Schema::create('intranet.users', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -36,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('intranet.cuenta');
+        Schema::dropIfExists('intranet.users');
     }
 }

@@ -21,3 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', function () {
     return \App\Models\Auth\Cuenta::all();
 });
+
+Route::post('login', [
+    'uses' => 'Login\SigninController@signin',
+    'as' => 'auth.login'
+]);
