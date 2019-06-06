@@ -19,6 +19,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    protected $table = 'intranet.cuenta';
 
     /**
      * Where to redirect users after login.

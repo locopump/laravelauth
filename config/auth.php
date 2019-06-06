@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'cuenta',
     ],
 
     /*
@@ -38,12 +38,14 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'table' => 'intranet.cuenta',
+            'provider' => 'cuenta',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'cuenta',
+            'table' => 'intranet.cuenta',
             'hash' => false,
         ],
     ],
@@ -66,9 +68,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+//        'users' => [
+//            'driver' => 'eloquent',
+//            'model' => App\User::class,
+//        ],
+        'cuenta' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'table' => 'intranet.cuenta',
+            'model' => App\Models\Auth\Cuenta::class,
         ],
 
         // 'users' => [
@@ -96,6 +103,11 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'cuenta' => [
+            'provider' => 'cuenta',
+            'table' => 'intranet.password_resets',
             'expire' => 60,
         ],
     ],
